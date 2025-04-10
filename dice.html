@@ -1,0 +1,14 @@
+<!DOCTYPE html><html><head><meta charset='UTF-8'><title>dice.html</title><link rel='stylesheet' href='style.css'></head><body><a href='index.html'>Back</a><br><br><h2>Dice Game</h2>
+<p>Pick a number (0-100), choose over or under, and roll!</p>
+<input type="number" id="guess" placeholder="Your number (0-100)" min="0" max="100">
+<button onclick="rollDice()">Roll</button>
+<p id="diceResult"></p>
+<script>
+function rollDice() {
+  const guess = parseInt(document.getElementById('guess').value);
+  const roll = Math.floor(Math.random() * 101);
+  const result = (roll > guess) ? "You win!" : "You lose!";
+  document.getElementById('diceResult').textContent = "Roll: " + roll + " — " + result;
+}
+</script>
+</body></html>

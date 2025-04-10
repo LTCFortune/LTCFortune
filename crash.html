@@ -1,0 +1,27 @@
+<!DOCTYPE html><html><head><meta charset='UTF-8'><title>crash.html</title><link rel='stylesheet' href='style.css'></head><body><a href='index.html'>Back</a><br><br><h2>Crash Game</h2>
+<p>Click start and cash out before it crashes!</p>
+<button onclick="startCrash()">Start</button>
+<button onclick="cashOut()">Cash Out</button>
+<p id="crashMultiplier">Multiplier: 1.00x</p>
+<p id="crashResult"></p>
+<script>
+let multiplier = 1.00;
+let interval;
+function startCrash() {
+  multiplier = 1.00;
+  document.getElementById('crashResult').textContent = "";
+  interval = setInterval(() => {
+    multiplier += 0.05;
+    document.getElementById('crashMultiplier').textContent = "Multiplier: " + multiplier.toFixed(2) + "x";
+    if (Math.random() < 0.01 * multiplier) {
+      clearInterval(interval);
+      document.getElementById('crashResult').textContent = "Crashed at " + multiplier.toFixed(2) + "x!";
+    }
+  }, 200);
+}
+function cashOut() {
+  clearInterval(interval);
+  document.getElementById('crashResult').textContent = "Cashed out at " + multiplier.toFixed(2) + "x!";
+}
+</script>
+</body></html>

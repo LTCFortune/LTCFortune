@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head><meta charset='UTF-8'><title>mines.html</title><link rel='stylesheet' href='style.css'></head><body><a href='index.html'>Back</a><br><br><h2>Mines Game</h2>
+<p>Click a cell. Avoid the mines!</p>
+<div id="minesGrid"></div>
+<script>
+const grid = document.getElementById('minesGrid');
+const size = 3;
+const mines = [Math.floor(Math.random()*9), Math.floor(Math.random()*9)];
+for (let i = 0; i < 9; i++) {
+  const btn = document.createElement('button');
+  btn.textContent = "?";
+  btn.style.margin = "5px";
+  btn.onclick = () => {
+    if (mines.includes(i)) {
+      btn.textContent = "BOOM!";
+      btn.style.background = "red";
+    } else {
+      btn.textContent = "Safe";
+      btn.disabled = true;
+    }
+  };
+  grid.appendChild(btn);
+}
+</script>
+</body></html>
